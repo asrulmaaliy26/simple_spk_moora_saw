@@ -1,0 +1,59 @@
+{% extends "base.html" %} 
+{% block page_title %} Admin {% endblock page_title %}
+{% block subtitle %} SPK Bantuan UMKM {% endblock subtitle %} 
+{% block subtitle2 %} Penilaian {% endblock subtitle2 %} 
+{% block contents %}
+<section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+
+          <!-- Hitung NORMALISASI -->
+          <div class="card">
+          <div class="card-body">
+           <p>[Note:  B = Benefit
+                  C = Cost]</p>
+            
+            
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Keterangan</th>
+                  <th>C1 - Varian Menu [B] Max</th>
+                  <th>C2 - Fasilitas [B] Max</th>
+                  <th>C3 - Harga [C] Min</th>
+                  <th>C4 - Waktu Operasional [B] Max</th>
+                  <th>C5 - Lokasi [C] Min</th>
+                 
+                </tr>
+                </thead>
+                <tbody>
+              <tr>
+                  <th> Nilai Max/Min Kriteria</th>
+                 
+                  <td>5</td>
+                  <td>5</td>
+                  <td>1</td>
+                  <td>4</td>
+                  <td>4</td>
+               
+
+                </tr>
+                </tbody>
+               
+              </table>
+              </div>
+
+          <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+  </div>
+    <!-- /.container-fluid -->
+  
+  </section>
+{% endblock contents %}

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+ {% block page_title %} Admin {% endblock page_title %}
+{% block subtitle %} SPK Bantuan UMKM {% endblock subtitle %}
+ {% block subtitle2%} Perangkingan {% endblock subtitle2 %}
+  {% block contents %}
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Nama Usaha</th>
+                  <th>C1 - Jenis Usaha [B] [N1 x 0.2]</th>
+                  <th>C2 - Jumlah Pekerja [B] [N2 x 0.4]</th>
+                  <th>C3 - Modal Usaha [C] [N3 x 0.4]</th>
+                  <th>C4 - Modal Usaha [C] [N3 x 0.4]</th>
+                  <th>C5 - Modal Usaha [C] [N3 x 0.4]</th>
+                  <th>Hasil Nilai</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in ranked_results %}
+                <tr>
+                    <td>{{ forloop.counter }}</td> {# Use forloop.counter to get the index #}
+                    <td>{{ row.nama_usaha }}</td>
+                    <td>{{ row.n1_normalized }} X {{row.nilai_bobot1}} = {{ row.n1_weighted|floatformat:3 }}</td>
+                    <td>{{ row.n2_normalized }} X {{row.nilai_bobot2}} = {{ row.n2_weighted }}</td>
+                    <td>{{ row.n3_normalized }} X {{row.nilai_bobot3}} = {{ row.n3_weighted }}</td>
+                    <td>{{ row.n4_normalized }} X {{row.nilai_bobot4}} = {{ row.n4_weighted }}</td>
+                    <td>{{ row.n5_normalized }} X {{row.nilai_bobot5}} = {{ row.n5_weighted }}</td>
+                    <td>{{ row.total_weighted|floatformat:3 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            
+            </table>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock contents %}

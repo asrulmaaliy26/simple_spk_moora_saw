@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+ {% block page_title %} Admin {% endblock page_title %}
+{% block subtitle %} SPK Bantuan UMKM {% endblock subtitle %}
+ {% block subtitle2%} Penilaian {% endblock subtitle2 %}
+  {% block contents %}
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Usaha</th>
+                    <th>N1 Weighted</th>
+                    <th>N2 Weighted</th>
+                    <th>N3 Weighted</th>
+                    <th>N4 Weighted</th>
+                    <th>N5 Weighted</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for data in weighted_normalized_data %}
+                      <tr>
+                          <td>{{ forloop.counter }}</td>
+                          <td>{{ data.nama_usaha }}</td>
+                          <td>{{data.n1_normalized}} x {{data.bobot1}} = {{ data.n1_weighted|floatformat:3 }}</td>
+                          <td>{{data.n2_normalized}} x {{data.bobot2}} = {{ data.n2_weighted|floatformat:3 }}</td>
+                          <td>{{data.n3_normalized}} x {{data.bobot3}} = {{ data.n3_weighted|floatformat:3 }}</td>
+                          <td>{{data.n4_normalized}} x {{data.bobot4}} = {{ data.n4_weighted|floatformat:3 }}</td>
+                          <td>{{data.n5_normalized}} x {{data.bobot5}} = {{ data.n5_weighted|floatformat:3 }}</td>
+                      </tr>
+                  {% endfor %}
+              </tbody>
+            
+            </table>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock contents %}

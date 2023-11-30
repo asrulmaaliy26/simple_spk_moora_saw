@@ -1,0 +1,34 @@
+{% extends "base.html" %} 
+{% block page_title %}
+Admin
+{% endblock page_title %} 
+{% block subtitle %} Data Bobot {% endblock subtitle %}
+
+{% block subtitle2 %} Data Bobot {% endblock subtitle2 %}
+
+{% block contents %}
+    <table>
+        <thead>
+            <tr>
+                <th>Nama Bobot</th>
+                <th>Kode Kriteria</th>
+                <th>Nama Kriteria</th>
+                <th>Nilai Bobot</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data_bobot %}
+            <tr>
+                {% for value in item %}
+                    <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">Tidak ada data bobot yang tersedia.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock contents %}

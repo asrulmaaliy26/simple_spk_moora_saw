@@ -1,0 +1,54 @@
+{% extends "base.html" %} 
+{% block page_title %} Admin {% endblock page_title %}
+{% block subtitle %} SPK Bantuan UMKM {% endblock subtitle %} 
+{% block subtitle2 %} Perangkingan {% endblock subtitle2 %} 
+{% block contents %}
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+
+          <!-- Hitung NORMALISASI -->
+          <div class="card">
+          <div class="card-body">
+
+            <table id="example1" class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>N[B] - N[C]</th>
+                  <th>Ranking Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for result in ranking_results %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>({{ result.n1_weighted|floatformat:3 }}+{{result.n2_weighted}}+{{result.n4_weighted|floatformat:3}}) - 
+                          ({{result.n3_weighted}}+{{result.n5_weighted}})
+                        </td>
+                        <td>{{ result.ranking_value|floatformat:3 }}</td>
+                    </tr>
+                {% endfor %}
+              </tbody>
+
+            </table>
+          </div>
+
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+    <!-- /.row -->
+</div>
+<!-- /.container-fluid -->
+
+</section>
+
+{% endblock contents %}

@@ -1,0 +1,91 @@
+{% extends "base.html" %} {% block page_title %} Admin {% endblock page_title %}
+{% block subtitle %} SPK Bantuan UMKM {% endblock subtitle %} 
+{% block subtitle2 %} Normalisasi {% endblock subtitle2 %} {% block contents %}
+
+<!-- Main content -->
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+
+          <!-- Hitung NORMALISASI -->
+          <div class="card">
+          <div class="card-body">
+            <p>[Note: B = Benefit
+              C = Cost]</p>
+            <table id="example1" class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Nama Usaha</th>
+                  <th>N1 - Varian Menu [B]</th>
+                  <th>N2 - Fasilitas [B]</th>
+                  <th>N3 - Harga [C]</th>
+                  <th>N4 - Waktu Operasional [B]</th>
+                  <th>N5 - Lokasi [C]</th>
+                </tr>
+              </thead>
+              <tbody>
+
+
+                {% for item in normalized_data %}
+                  <tr>
+
+                      <td>{{ forloop.counter }}</td>
+                      <td>
+                          {{ item.nama_usaha }}
+                      </td>
+                      <td>{{ item.C1 }} / √(
+                        {% for i in item.C1v %}
+                          {{ i }}<sup>2</sup>{% if not forloop.last %} + {% endif %}
+                        {% endfor %}
+                      ) = {{ item.n1_normalized }}</td>
+                      
+                      <td>{{ item.C2 }} / √(
+                        {% for i in item.C2v %}
+                          {{ i }}<sup>2</sup>{% if not forloop.last %} + {% endif %}
+                        {% endfor %}
+                      ) = {{ item.n2_normalized }}</td>
+                      
+                      <td>{{ item.C3 }} / √(
+                        {% for i in item.C3v %}
+                          {{ i }}<sup>2</sup>{% if not forloop.last %} + {% endif %}
+                        {% endfor %}
+                      ) = {{ item.n3_normalized }}</td>
+                      
+                      <td>{{ item.C4 }} / √(
+                        {% for i in item.C4v %}
+                          {{ i }}<sup>2</sup>{% if not forloop.last %} + {% endif %}
+                        {% endfor %}
+                      ) = {{ item.n4_normalized }}</td>
+                      
+                      <td>{{ item.C5 }} / √(
+                        {% for i in item.C5v %}
+                          {{ i }}<sup>2</sup>{% if not forloop.last %} + {% endif %}
+                        {% endfor %}
+                      ) = {{ item.n5_normalized }}</td>
+                      
+                  </tr>
+              {% endfor %}
+
+
+            </tbody>
+
+          </table>
+          <!-- /.card-body -->
+          <p>&frac1;<sup>&radic;<span>5</span><sup>2</sup></sup></p>
+
+        </div>
+        <!-- /.card-body -->
+      </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+
+</section>
+{% endblock contents %}

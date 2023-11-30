@@ -1,0 +1,60 @@
+{% extends "base.html" %} {% block page_title %} Admin {% endblock page_title %}
+{% block subtitle %} SPK Bantuan UMKM {% endblock subtitle %} 
+{% block subtitle2 %} Normalisasi {% endblock subtitle2 %} {% block contents %}
+
+<!-- Main content -->
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+
+          <!-- Hitung NORMALISASI -->
+          <div class="card">
+          <div class="card-body">
+            <p>[Note: B = Benefit
+              C = Cost]</p>
+            <table id="example1" class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Nama Usaha</th>
+                  <th>N1 - Varian Menu [B]</th>
+                  <th>N2 - Fasilitas [B]</th>
+                  <th>N3 - Harga [C]</th>
+                  <th>N4 - Waktu Operasional [B]</th>
+                  <th>N5 - Lokasi [C]</th>
+                </tr>
+              </thead>
+              <tbody>
+
+
+                {% for item in normalized_data %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ item.nama_usaha }}</td>
+                    <td>{{ item.C1 }}/{{ maxmin.maxminK1 }} = {{ item.n1_normalized }}</td>
+                    <td>{{ item.C2 }}/{{ maxmin.maxminK2 }} = {{ item.n2_normalized }}</td>
+                    <td>{{ maxmin.maxminK3 }}/{{ item.C3 }}  = {{ item.n3_normalized }}</td>
+                    <td>{{ item.C4 }}/{{ maxmin.maxminK4 }} = {{ item.n4_normalized }}</td>
+                    <td>{{ maxmin.maxminK5 }}/{{ item.C5 }}  = {{ item.n5_normalized }}</td>
+                  </tr>
+              {% endfor %}
+
+            </tbody>
+
+          </table>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card-body -->
+      </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+
+</section>
+{% endblock contents %}

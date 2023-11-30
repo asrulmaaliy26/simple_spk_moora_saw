@@ -1,0 +1,67 @@
+{% extends "base.html" %} 
+{% block page_title %} Admin {% endblock page_title %}
+{% block subtitle2 %} {{namaData}} {% endblock subtitle2 %} 
+{% block contents %}
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          
+          <!-- /.card -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title"> Data {{namaData}}</h3>
+            </div>
+            <!-- /.card-header -->
+
+            <div class="card-body">
+              <p>
+                <a href="/admin/tabeldatabase/{{namaDB}}/add/" type="button" class="btn btn-success">Tambah Bobot</a>
+                </p>
+              <div class="table-responsive">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      {% for nama in isiFields %}
+                        {% if nama != id %}  <!-- Mengganti 'id' dengan string 'id' -->
+                          <th> {{ nama }}</th>
+                        {% endif %}
+                      {% endfor %}
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for row in isiData %}
+                      <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ row.kode_kriteria_id }}</td>
+                        <td>{{ row.nama_kriteria }}</td>  
+                        <td>{{ row.nama_bobot }}</td>
+                        <td>{{ row.nilai_bobot }}</td>
+                        <td class="text-center">
+                          <a href="/admin/tabeldatabase/{{namaDB}}/{{row.id_bobot}}/change/" class="btn btn-outline-warning edit-button" data-id="{{ row.id_bobot }}">Edit</a>
+                          <a href="/admin/tabeldatabase/{{namaDB}}/{{row.id_bobot}}/delete/" class="btn btn-outline-danger" onclick="return confirm('Hapus data ini ?')">Delete</a>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+
+{% endblock contents %}
